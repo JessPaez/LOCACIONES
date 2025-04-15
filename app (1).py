@@ -5,7 +5,7 @@ import re
 # ----------------------------
 # CARGAR CSV DESDE GITHUB
 # ----------------------------
-st.title("📦 Filtrado interactivo de pedidos")
+st.title("📦 PREBOOKS KOMET")
 
 # ⚠️ Reemplazá esta URL con la URL RAW de tu archivo en GitHub
 csv_url = "https://raw.githubusercontent.com/JessPaez/LOCACIONES/refs/heads/main/PEDIDOS_SC.csv"
@@ -61,7 +61,7 @@ try:
     st.sidebar.header("🔎 Filtros")
 
     fecha_filtro = st.sidebar.date_input("📅 Fecha exacta:")
-    variedad_filtro = st.sidebar.text_input("🌸 Variedad (texto parcial):", value="Rose")
+    variedad_filtro = st.sidebar.text_input("🌸 Variedad:", value="")
     cod_opcion = st.sidebar.selectbox("🏷️ Código:", options=["AMBOS", "FDB", "LOC"])
 
     # Aplicar filtros
