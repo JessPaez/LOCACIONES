@@ -87,12 +87,5 @@ try:
     else:
         st.dataframe(filtro)
 
-        st.download_button(
-            label="⬇️ Descargar resultado en Excel",
-            data=filtro.to_excel(index=False),
-            file_name="resultado_filtrado.xlsx",
-            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-        )
-
 except Exception as e:
     st.error(f"❌ Error al cargar el archivo desde GitHub: {e}")
