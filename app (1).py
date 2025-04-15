@@ -5,7 +5,7 @@ import re
 # ----------------------------
 # CARGAR CSV DESDE GITHUB
 # ----------------------------
-st.title("📦 PREBOOKS KOMET")
+st.title("📦 Filtrado interactivo de pedidos")
 
 # ⚠️ Reemplazá esta URL con la URL RAW de tu archivo en GitHub
 csv_url = "https://raw.githubusercontent.com/JessPaez/LOCACIONES/refs/heads/main/PEDIDOS_SC.csv"
@@ -18,7 +18,6 @@ try:
     # LIMPIEZA Y TRANSFORMACIONES
     # ----------------------------
 
-    # Reparar fechas con formato personalizado si es necesario
     def reparar_fecha(valor):
         try:
             day, month = valor.split("-")
@@ -51,20 +50,22 @@ try:
     df = df.groupby(["Farm Shi", "Product", "Cod", "Largo"], as_index=False).sum()
     df = df.sort_values(by=["Farm Shi", "Product", "Largo"]).reset_index(drop=True)
 
-    # Formatear fechas para mostrar sin hora
+    # Mostrar fechas sin hora
     df["Farm Shi"] = df["Farm Shi"].dt.date
+
+    # Reordenar columnas para mostrar 'Largo' después de 'Product'
+    columnas_ordenadas = ["Farm Shi", "Product", "Largo", "Cod", "Total Units"]
+    df = df[columnas_ordenadas]
 
     # ----------------------------
     # FILTROS
     # ----------------------------
-
     st.sidebar.header("🔎 Filtros")
 
     fecha_filtro = st.sidebar.date_input("📅 Fecha exacta:")
-    variedad_filtro = st.sidebar.text_input("🌸 Variedad:", value="")
+    variedad_filtro = st.sidebar.text_input("🌸 Variedad (texto parcial):", value="Rose")
     cod_opcion = st.sidebar.selectbox("🏷️ Código:", options=["AMBOS", "FDB", "LOC"])
 
-    # Aplicar filtros
     filtro = df.copy()
 
     if fecha_filtro:
@@ -85,6 +86,13 @@ try:
         st.warning("No hay resultados para los filtros seleccionados.")
     else:
         st.dataframe(filtro)
+
+        st.download_button(
+            label="⬇️ Descargar resultado en Excel",
+            data=filtro.to_excel(index=False),
+            file_name="resultado_filtrado.xlsx",
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        )
 
 except Exception as e:
     st.error(f"❌ Error al cargar el archivo desde GitHub: {e}")
