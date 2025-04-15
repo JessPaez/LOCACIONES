@@ -37,7 +37,7 @@ def separar(product_cm):
 # CARGA DE DATOS
 # ----------------------------
 
-st.title("📦 Filtrado interactivo de pedidos")
+st.title("📦 PREBOOKS KOMET")
 
 uploaded_file = st.file_uploader("📁 Carga tu archivo PEDIDOS_SC.csv", type="csv")
 
