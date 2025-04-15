@@ -97,13 +97,5 @@ if uploaded_file is not None:
     else:
         st.dataframe(filtro)
 
-        # Descargar Excel
-        st.download_button(
-            label="⬇️ Descargar resultado en Excel",
-            data=filtro.to_excel(index=False),
-            file_name="resultado_filtrado.xlsx",
-            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-        )
-
 else:
     st.info("👈 Carga un archivo CSV para comenzar.")
