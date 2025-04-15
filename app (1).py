@@ -69,7 +69,7 @@ if uploaded_file is not None:
     fecha_filtro = st.sidebar.date_input("📅 Selecciona una fecha:", value=fechas_unicas[0] if len(fechas_unicas) > 0 else None)
 
     # Variedad
-    variedad_filtro = st.sidebar.text_input("🌸 Variedad (texto parcial):", value="Rose")
+    variedad_filtro = st.sidebar.text_input("🌸 Variedad:", value="")
 
     # Cod
     cod_opcion = st.sidebar.selectbox("🏷️ Código:", options=["AMBOS", "FDB", "LOC"])
