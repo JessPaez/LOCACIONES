@@ -89,3 +89,4 @@ try:
 
 except Exception as e:
     st.error(f"❌ Error al cargar el archivo desde GitHub: {e}")
+st.subheader("Compras")
