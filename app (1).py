@@ -93,7 +93,7 @@ try:
     else:
         st.dataframe(filtro)
         st.subheader("🛒 Compras")
-        st.dataframe(filtro_compras, width = 100 )
+        st.dataframe(filtro_compras, width = 3000 )
 
 except Exception as e:
     st.error(f"❌ Error al cargar el archivo desde GitHub: {e}")
