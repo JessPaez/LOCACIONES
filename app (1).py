@@ -93,7 +93,9 @@ try:
     else:
         st.dataframe(filtro)
         st.subheader("🛒 Compras")
-        filtro_compras = filtro_compras.dropna(axis=1, how='all')
+        columnas_vacias = filtro_compras.columns[filtro_compras.isna().all()]tolist()
+        col_elim = [col for col in columnas_vacias if col not in columnas_ordenadas]
+        filtro_compras = filtro_compras.drop(columns=col_elim)
         st.dataframe(filtro_compras)
 
 except Exception as e:
