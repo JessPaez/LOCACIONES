@@ -63,8 +63,10 @@ try:
     st.sidebar.header("🔎 Filtros")
 
     fecha_filtro = st.sidebar.date_input("📅 Fecha exacta:")
-    variedad_filtro = st.sidebar.text_input("🌸 Variedad (texto parcial):", value="Rose")
+    variedad_filtro = st.sidebar.text_input("🌸 Variedad :", value="")
     cod_opcion = st.sidebar.selectbox("🏷️ Código:", options=["AMBOS", "FDB", "LOC"])
+
+    variedad_compras_filtro = st.sidebar.text_input('🌸 Variedad :',value="")
 
     filtro = df.copy()
 
