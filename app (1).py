@@ -14,7 +14,7 @@ csv_url_compras = "https://raw.githubusercontent.com/JessPaez/LOCACIONES/refs/he
 try:
     # Cargar datos y parsear la columna de fechas directamente
     df = pd.read_csv(csv_url, parse_dates=["Farm Shi"])
-    df_compras = pd.read_cvs(csv_url_compras).fillna("")
+    df_compras = pd.read_csv(csv_url_compras).fillna("")
 
     # ----------------------------
     # LIMPIEZA Y TRANSFORMACIONES
