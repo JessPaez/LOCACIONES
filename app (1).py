@@ -83,6 +83,12 @@ try:
 
     if cod_opcion != "AMBOS":
         filtro = filtro[filtro["Cod"] == cod_opcion]
+    
+    # Detectar columnas con al menos un dato válido (no NaN)
+    columnas_validas = filtro_compras.columns[filtro_compras.notna().any()].tolist()
+
+    # Filtrar el DataFrame para mostrar solo columnas con datos
+    filtro_visible = filtro_compras[columnas_validas]
 
     # ----------------------------
     # RESULTADOS
@@ -94,7 +100,7 @@ try:
     else:
         st.dataframe(filtro)
         st.subheader("🛒 Compras")
-        st.dataframe(filtro_compras)
+        st.dataframe(filtro_visible)
 
 except Exception as e:
     st.error(f"❌ Error al cargar el archivo desde GitHub: {e}")
