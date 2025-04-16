@@ -5,7 +5,7 @@ import re
 # ----------------------------
 # CARGAR CSV DESDE GITHUB
 # ----------------------------
-st.title("📦 Filtrado interactivo de pedidos")
+st.title("📦 PREBOOKS KOMET")
 
 # ⚠️ Reemplazá esta URL con la URL RAW de tu archivo en GitHub
 csv_url = "https://raw.githubusercontent.com/JessPaez/LOCACIONES/refs/heads/main/PEDIDOS_SC.csv"
@@ -93,8 +93,9 @@ try:
         st.warning("No hay resultados para los filtros seleccionados.")
     else:
         st.dataframe(filtro)
+        st.subheader("🛒 Compras")
         st.dataframe(filtro_compras)
 
 except Exception as e:
     st.error(f"❌ Error al cargar el archivo desde GitHub: {e}")
-st.subheader("🛒 Compras")
+
