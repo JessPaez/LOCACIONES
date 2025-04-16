@@ -66,7 +66,7 @@ try:
     variedad_filtro = st.sidebar.text_input("🌸 Variedad :", value="")
     cod_opcion = st.sidebar.selectbox("🏷️ Código:", options=["AMBOS", "FDB", "LOC"])
 
-    variedad_compras_filtro = st.sidebar.text_input('🌸 Variedad :',value="")
+    variedad_compras_filtro = st.sidebar.text_input('🌸 Variedad compras :',value="")
 
     filtro = df.copy()
 
