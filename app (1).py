@@ -93,7 +93,7 @@ try:
         st.warning("No hay resultados para los filtros seleccionados.")
     else:
         st.dataframe(filtro)
-        st.datafrmae(filtro_compras)
+        st.dataframe(filtro_compras)
 
 except Exception as e:
     st.error(f"❌ Error al cargar el archivo desde GitHub: {e}")
